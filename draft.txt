@@ -1,0 +1,22 @@
+CommandEngine<CustomContext, CustomResult> engine = new CommandEngine<>();
+
+Middleware<CustomContext, CustomResult> middleware = new CustomMiddleware("wer", 132);
+
+Middleware<CustomContext, CustomResult> group = engine.createMiddlewareGroup(
+    new CustomMiddleware("asd"),
+    new CustomMiddleware("ewr"),
+    middleware
+);
+
+engine.command(list("command", "cmd", "c"), branch -> {
+    branch.default(new CommandHandler());
+    
+    branch.command(list("subcommand", "sub"), branch -> {
+        branch.command(list("anothersub", "asub"), new CommandHandler());
+    }, new CustomMiddleware());
+    
+    branch.command(list("subcommand2", "sub2"), new CommandHandler());
+}, list(middleware, group));
+
+CustomContext context = new CustomContext();
+CustomResult result = engine.handle(context, "command subcommand");

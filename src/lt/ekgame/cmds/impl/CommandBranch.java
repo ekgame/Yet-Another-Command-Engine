@@ -11,7 +11,7 @@ import lt.ekgame.cmds.CmdHandler;
 import lt.ekgame.cmds.CmdNode;
 import lt.ekgame.cmds.CmdToken;
 
-public class CommandBranch<C extends CmdContext, R extends Exception> implements CmdBranch<C, R> {
+public class CommandBranch<C extends CmdContext, R extends Throwable> implements CmdBranch<C, R> {
 	
 	protected String name;
 	private CmdHandler<C, R> defaultHandler = null;

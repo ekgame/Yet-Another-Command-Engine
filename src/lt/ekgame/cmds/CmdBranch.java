@@ -3,7 +3,7 @@ package lt.ekgame.cmds;
 import java.util.List;
 import java.util.function.Consumer;
 
-public interface CmdBranch<C extends CmdContext, R extends Exception> {
+public interface CmdBranch<C extends CmdContext, R extends Throwable> {
 	
 	void command(String label, CmdHandler<C, R> defaultHandler, Consumer<CmdNode<C, R>> consumer);
 	

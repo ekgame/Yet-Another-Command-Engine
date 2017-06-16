@@ -4,7 +4,7 @@ import lt.ekgame.cmds.CmdContext;
 import lt.ekgame.cmds.CmdHandler;
 import lt.ekgame.cmds.CmdNode;
 
-public class CommandNode<C extends CmdContext, R extends Exception> extends CommandBranch<C, R> implements CmdNode<C, R> {
+public class CommandNode<C extends CmdContext, R extends Throwable> extends CommandBranch<C, R> implements CmdNode<C, R> {
 	
 	private CommandBranch<C, R> parent;
 	
